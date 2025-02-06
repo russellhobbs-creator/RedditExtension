@@ -1,0 +1,24 @@
+// manifest.json
+{
+  "manifest_version": 3,
+  "name": "Reddit Filter",
+  "version": "1.0",
+  "description": "Hides Reddit links containing specified words.",
+  "permissions": ["storage"],
+  "host_permissions": ["https://www.reddit.com/"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.reddit.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none';"
+  }
+}
